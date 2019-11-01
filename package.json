@@ -1,0 +1,11 @@
+{
+  "name": "paint-the-web",
+  "version": "1.0.0",
+  "description": "Theming with scss and css variables",
+  "main": "index.html",
+  "author": "BrotherDonkey",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.23.2"
+  }
+}
