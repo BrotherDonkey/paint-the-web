@@ -1,10 +1,64 @@
+$theme-colors: (
+	'boron': (
+		'background': #0A090C,
+		'text': #FFFFFF,
+	),
+	'hydrogen': (
+		'background': #13293D,
+		'text': #F8F991,
+	)
+);
+
+// :root, // :root will make these variables default
+// html.boron { // boron will be our default theme
+//     --background: #0A090C;
+//     --text: #FFFFFF;
+// }
+
+@each $key, $value in $theme-colors {
+	@if $key == 'boron' {
+		:root {
+			@each $name, $color in map-get($theme-colors, 'boron') {
+				--#{$name}: #{$color};
+			}
+		}
+	}
+	html.#{$key} {
+		@each $name, $color in map-get($theme-colors, $key) {
+			--#{$name}: #{$color};
+		}
+	} 
+}
+
+// html.hydrogen { // hydrogen will be an additional theme
+//     --background: #13293D;
+//     --text: #F8F991;
+// }
+
+// body {
+// 	background-color: var(--background);
+// }
 
 h1,
 button {
-    color: black;
+  color: var(--text);
 }
 
 button {
-    border: 1px solid black;
-    appearance: none;
+ border: 1px solid var(--text);
+ background-color: var(--background);
+ appearance: none; // don't even worry about it
 }
+
+// :root, // :root will make these variables default
+// html.boron { // boron will be our default
+// 	@each $key, $val in map-get($theme-colors, 'boron') {
+// 		--#{$key}: #{$val};
+// 	}
+// }
+
+// html.hydrogen { // hydrogen will be an additional theme
+// 	@each $key, $val in map-get($theme-colors, 'hydrogen') {
+// 		--#{$key}: #{$val};
+// 	}
+// }
