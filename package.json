@@ -6,6 +6,6 @@
   "author": "BrotherDonkey",
   "license": "MIT",
   "devDependencies": {
-    "sass": "^1.23.2"
+    "sass": "^1.23.3"
   }
 }

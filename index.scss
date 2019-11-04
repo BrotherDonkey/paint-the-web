@@ -6,16 +6,11 @@ $theme-colors: (
 	'hydrogen': (
 		'background': #13293D,
 		'text': #F8F991,
-	)
+	),
 );
 
-// :root, // :root will make these variables default
-// html.boron { // boron will be our default theme
-//     --background: #0A090C;
-//     --text: #FFFFFF;
-// }
-
 @each $key, $value in $theme-colors {
+	// set the default theme as :root
 	@if $key == 'boron' {
 		:root {
 			@each $name, $color in map-get($theme-colors, 'boron') {
@@ -23,6 +18,8 @@ $theme-colors: (
 			}
 		}
 	}
+
+	// generate all css variables for each theme
 	html.#{$key} {
 		@each $name, $color in map-get($theme-colors, $key) {
 			--#{$name}: #{$color};
@@ -30,14 +27,16 @@ $theme-colors: (
 	} 
 }
 
-// html.hydrogen { // hydrogen will be an additional theme
-//     --background: #13293D;
-//     --text: #F8F991;
-// }
+// Declare variables derived from our theme map
 
-// body {
-// 	background-color: var(--background);
-// }
+$background: var(--background);
+$text: var(--text);
+
+// Define our styles
+
+body {
+	background-color: $background;
+}
 
 h1,
 button {
@@ -49,16 +48,3 @@ button {
  background-color: var(--background);
  appearance: none; // don't even worry about it
 }
-
-// :root, // :root will make these variables default
-// html.boron { // boron will be our default
-// 	@each $key, $val in map-get($theme-colors, 'boron') {
-// 		--#{$key}: #{$val};
-// 	}
-// }
-
-// html.hydrogen { // hydrogen will be an additional theme
-// 	@each $key, $val in map-get($theme-colors, 'hydrogen') {
-// 		--#{$key}: #{$val};
-// 	}
-// }
